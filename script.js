@@ -2,71 +2,64 @@ import { pipeline } from '@xenova/transformers';
 
 const answerer = await pipeline('question-answering', 'Xenova/distilbert-base-uncased-distilled-squad');
 
-const question = 'What is the KTN number?';
+const question = 'What is the KTN?';
 const context = `
-First Name: John
-Last Name: Snow
-Date of Birth: 1990-05-15
-Gender: Male
-Marital Status: Single
-Phone Number: +1 (555) 123-4567
-Email: john.snow@example.com
-Address: 123 Winterfell Lane, Castle Black, The North, Westeros, 01010
-Social Security Number (SSN): 123-45-6789
+First Name: John.
+Last Name: Snow.
+Date of Birth: 1990-05-15.
+Gender: Male.
+Marital Status: Single.
+Phone Number: +1 (555) 123-4567.
+Email: john.snow@example.com.
+Address: 123 Winterfell Lane, Castle Black, The North, Westeros, 01010.
+Social Security Number (SSN): 123-45-6789.
 
+Health Insurance: 123456.
+Primary Care Physician: Dr. Maester Aemon.
+Allergies: Penicillin.
+Current Medication is None.
+Blood Type is O+.
+Emergency Contact: Arya Stark (+1 (555) 987-6543).
 
-Health Insurance: 123456
-Primary Care Physician: Dr. Maester Aemon
-Allergies: Penicillin
-Current Medications: None
-Blood Type: O+
-Emergency Contact: Arya Stark (+1 (555) 987-6543)
+Current Employer: Night's Watch.
+Job Title: Lord Commander.
+Department: Defence.
+Work Email: john.snow@thenightswatch.org.
+Work Phone Number: +1 (555) 890-1234.
+Office Address: The Wall, Castle Black, The North, Westeros, 01010.
 
+Highest Degree Obtained: Bachelor of Arms.
+University: The Citadel.
+Graduation Year: 2012.
+Major: Battle Tactics and Leadership.
 
-Current Employer: Night's Watch
-Job Title: Lord Commander
-Department: Defence
-Work Email: john.snow@thenightswatch.org
-Work Phone Number: +1 (555) 890-1234
-Office Address: The Wall, Castle Black, The North, Westeros, 01010
+Passport Number: W12345678.
+Nationality: Westerosi.
+Frequent Flyer Number: Royal Air: 56789-123.
+Known Traveler Number (KTN): KTN1234567890.
+Preferred Airlines: Royal Air, Dragonfly Air.
+Destination Preferences: Dragonstone, King's Landing, Winterfell.
 
+Bank Name: Iron Bank of Braavos.
+Account Number: 000123456789.
+Routing Number: 110000000.
+Credit Card Type: Visa.
+Credit Card Number: 4111 1111 1111 1111.
+Expiration Date: 01/25.
+CVV: 123.
 
-Highest Degree Obtained: Bachelor of Arms
-University: The Citadel
-Graduation Year: 2012
-Major: Battle Tactics and Leadership
+LinkedIn: [linkedin.com/in/johnsnow](https://linkedin.com/in/johnsnow).
+Twitter: [@johnsnow_nw](https://twitter.com/johnsnow_nw).
+Facebook: [facebook.com/john.snow.nightswatch](https://facebook.com/john.snow.nightswatch).
+Instagram: [@lordcommander_snow](https://instagram.com/lordcommander_snow).
 
-
-Passport Number: W12345678
-Nationality: Westerosi
-Frequent Flyer Number: Royal Air: 56789-123
-Known Traveler Number (KTN): KTN1234567890
-Preferred Airlines: Royal Air, Dragonfly Air
-Destination Preferences: Dragonstone, King's Landing, Winterfell
-
-
-Bank Name: Iron Bank of Braavos
-Account Number: 000123456789
-Routing Number: 110000000
-Credit Card Type: Visa
-Credit Card Number: 4111 1111 1111 1111
-Expiration Date: 01/25
-CVV: 123
-
-
-LinkedIn: [linkedin.com/in/johnsnow](https://linkedin.com/in/johnsnow)
-Twitter: [@johnsnow_nw](https://twitter.com/johnsnow_nw)
-Facebook: [facebook.com/john.snow.nightswatch](https://facebook.com/john.snow.nightswatch)
-Instagram: [@lordcommander_snow](https://instagram.com/lordcommander_snow)
-
-
-Favorite Food: Roast Direwolf
-Hobbies: Swordfighting, Horse Riding, Exploring the North
-Pet Name: Ghost
-Pet Type: Direwolf
+Favorite Food: Roast Direwolf.
+Hobbies: Swordfighting, Horse Riding, Exploring the North.
+Pet Name: Ghost.
+Pet Type: Direwolf.
 Languages Spoken: Common Tongue, Dothraki, Valyrian`
 
-const output = await answerer(question, context, {topk:2} );
+const output = await answerer(question, context, {topk:10} );
 
 console.log(output)
 
