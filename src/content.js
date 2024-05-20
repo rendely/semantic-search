@@ -29,13 +29,16 @@ document.addEventListener('keydown', (e) => {
         const textInputs = Array.from(inputs).filter(i => i.type === 'text');
         textInputs.forEach(t => autofillElement({target: t}))
     }
+    if (e.key === 'j' && e.metaKey){
+        saveInputs(document.activeElement)
+    }
 },true);
 
 let ansIndex = 0;
 
 document.addEventListener('focus', (e) => ansIndex = 0, true);
 
-document.addEventListener('blur', saveInputs, true);
+document.addEventListener('blur', (e) => saveInputs(e.target), true);
 
 
 function getElementQuery(target){
@@ -51,10 +54,10 @@ function autofillElement(e) {
     classify(query, e.target, true);
 }
 
-function saveInputs(e){
-    if (e.target.nodeName !== 'INPUT' || e.target.type !== 'text') return 
-    const key = getElementQuery(e.target);
-    const value = e.target.value;
+function saveInputs(target){
+    if (target.nodeName !== 'INPUT' || target.type !== 'text') return 
+    const key = getElementQuery(target);
+    const value = target.value;
     if (key.length < 4 || value.length < 4) return
     const message = {
         action: 'save',
@@ -63,4 +66,5 @@ function saveInputs(e){
     chrome.runtime.sendMessage(message, (response) => {
         console.log(response);
     });
+    target.style.backgroundColor = 'red';
 }

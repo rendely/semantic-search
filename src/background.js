@@ -168,13 +168,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         console.log('Saving',message);
         const newData = message.save;
         console.log(newData);
-        newData.embed =  classify(newData.key);
+        (async function () {newData.embed = await classify(newData.key)})();
         data.push(newData);
         console.log(data);
         sendResponse(newData);
     }
 
     if (message.action === 'classify') {
+        console.log(data);
 
         // Run model prediction asynchronously
         (async function () {
