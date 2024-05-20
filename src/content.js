@@ -36,15 +36,29 @@ document.addEventListener('focus', (e) => ansIndex = 0, true);
 
 document.addEventListener('blur', saveInputs, true);
 
-function autofillElement(e) {
-    const parentString = e.target.parentElement.innerText;
-    const grandparentString = e.target.parentElement.parentElement.innerText;
-    const placeholder = e.target.placeholder;
+
+function getElementQuery(target){
+    const parentString = target.parentElement.innerText;
+    const grandparentString = target.parentElement.parentElement.innerText;
+    const placeholder = target.placeholder;
     const query = (parentString.length < 4 ? grandparentString : parentString) + placeholder;
+    return query;
+}
+
+function autofillElement(e) {
+    const query = getElementQuery(e.target);
     classify(query, e.target, true);
 }
 
 function saveInputs(e){
-    if (e.nodeName !== 'input' && e.type !== 'text') return 
-    console.log(e)
+    if (e.target.nodeName !== 'INPUT' && e.target.type !== 'text') return 
+    const key = getElementQuery(e.target);
+    const value = e.target.value;
+    const message = {
+        action: 'save',
+        save: {key, value},
+    }
+    chrome.runtime.sendMessage(message, (response) => {
+        console.log(response);
+    });
 }
