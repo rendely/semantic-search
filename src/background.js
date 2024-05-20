@@ -63,7 +63,6 @@ const data = [
     { "key": "Languages Spoken", "value": "Common Tongue, Dothraki, Valyrian" }
 ]
 
-
 // Skip initial check for local models, since we are not loading any local models.
 env.allowLocalModels = false;
 
@@ -166,10 +165,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('sender', sender)
 
     if (message.action === 'save') {
-        console.log(message);
+        console.log('Saving',message);
         const newData = message.save;
-        newData.embed =  classify(d.key);
+        console.log(newData);
+        newData.embed =  classify(newData.key);
         data.push(newData);
+        console.log(data);
         sendResponse(newData);
     }
 

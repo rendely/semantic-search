@@ -20,6 +20,7 @@ function classify(query, target, isLucky = false) {
 }
 
 document.addEventListener('keydown', (e) => {
+    console.log('keydown');
     if (e.key === 'i' && e.metaKey){
         autofillElement({target: document.activeElement})
     }
@@ -51,9 +52,10 @@ function autofillElement(e) {
 }
 
 function saveInputs(e){
-    if (e.target.nodeName !== 'INPUT' && e.target.type !== 'text') return 
+    if (e.target.nodeName !== 'INPUT' || e.target.type !== 'text') return 
     const key = getElementQuery(e.target);
     const value = e.target.value;
+    if (key.length < 4 || value.length < 4) return
     const message = {
         action: 'save',
         save: {key, value},
