@@ -15,7 +15,14 @@ function classify(query, target) {
     });
 
 }
-document.addEventListener('focus', handleFocus, true);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'i' && e.metaKey){
+        handleFocus({target: document.activeElement})
+    }
+},true);
+
+// document.addEventListener('focus', handleFocus, true);
 
 function handleFocus(e) {
     const query = e.target.parentElement.innerText;
