@@ -61,7 +61,7 @@ Languages Spoken: Common Tongue, Dothraki, Valyrian`
 
 const output = await answerer(question, context, {topk:10} );
 
-console.log(output)
+// console.log(output)
 
 
 const data = [
@@ -103,10 +103,10 @@ const data = [
     {"key": "Credit Card Number", "value": "4111 1111 1111 1111"},
     {"key": "Expiration Date", "value": "01/25"},
     {"key": "CVV", "value": "123"},
-    {"key": "LinkedIn", "value": "[linkedin.com/in/johnsnow](https://linkedin.com/in/johnsnow)"},
-    {"key": "Twitter", "value": "[@johnsnow_nw](https://twitter.com/johnsnow_nw)"},
-    {"key": "Facebook", "value": "[facebook.com/john.snow.nightswatch](https://facebook.com/john.snow.nightswatch)"},
-    {"key": "Instagram", "value": "[@lordcommander_snow](https://instagram.com/lordcommander_snow)"},
+    {"key": "LinkedIn", "value": "https://linkedin.com/in/johnsnow"},
+    {"key": "Twitter", "value": "https://twitter.com/johnsnow_nw"},
+    {"key": "Facebook", "value": "https://facebook.com/john.snow.nightswatch"},
+    {"key": "Instagram", "value": "https://instagram.com/lordcommander_snow"},
     {"key": "Favorite Food", "value": "Roast Direwolf"},
     {"key": "Hobbies", "value": "Swordfighting, Horse Riding, Exploring the North"},
     {"key": "Pet Name", "value": "Ghost"},
@@ -124,7 +124,7 @@ await Promise.all(data.map(async (d) => {
 }));
 
 // console.log(data.slice(0,4))
-const query = {key: 'TSA Pre'}
+const query = {key: 'LinkedIn Profile\n\n\nPlease ensure to provide either your LinkedIn profile or Resume, we require at least one of the two.'}
 query.embed = await extractor(query.key,  { pooling: 'mean', normalize: true });
 
 const results = await Promise.all(
