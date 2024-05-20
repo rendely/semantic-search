@@ -173,7 +173,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             old.value = newData.value;
             (async function () {old.embed = await classify(newData.key)})();
             sendResponse(old);
-
+            return;
         }
         console.log(newData);
         (async function () {newData.embed = await classify(newData.key)})();
