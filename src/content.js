@@ -25,9 +25,9 @@ document.addEventListener('keydown', (e) => {
         autofillElement({target: document.activeElement})
     }
     if (e.key === 'u' && e.metaKey){
-        const inputs = document.querySelectorAll('input');
+        const inputs = document.querySelectorAll('input, textarea');
         const textInputs = Array.from(inputs).filter(i => i.type === 'text');
-        textInputs.forEach(t => autofillElement({target: t}))
+        textInputs.forEach(t => autofillElement({target: t}), true)
     }
     if (e.key === 'j' && e.metaKey){
         saveInputs(document.activeElement)
@@ -49,13 +49,14 @@ function getElementQuery(target){
     return query;
 }
 
-function autofillElement(e) {
+function autofillElement(e, isLucky=false) {
     const query = getElementQuery(e.target);
-    classify(query, e.target, true);
+    classify(query, e.target), isLucky;
 }
 
 function saveInputs(target){
-    if (target.nodeName !== 'INPUT' || target.type !== 'text') return 
+    if ((target.nodeName !== 'INPUT' && target.nodeName !== 'TEXTAREA')) return 
+    if ((target.nodeName === 'INPUT' && target.type !== 'text')) return 
     const key = getElementQuery(target);
     const value = target.value;
     if (key.length < 4 || value.length < 4) return

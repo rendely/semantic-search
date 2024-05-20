@@ -164,9 +164,17 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('sender', sender)
 
+    //TODO: REFACTOR
     if (message.action === 'save') {
         console.log('Saving',message);
         const newData = message.save;
+        const old = data.find(d => d.key === newData.key)
+        if (old){
+            old.value = newData.value;
+            (async function () {old.embed = await classify(newData.key)})();
+            sendResponse(old);
+
+        }
         console.log(newData);
         (async function () {newData.embed = await classify(newData.key)})();
         data.push(newData);
