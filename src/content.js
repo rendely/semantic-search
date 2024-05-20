@@ -10,8 +10,10 @@ function classify(query, target) {
     }
     chrome.runtime.sendMessage(message, (response) => {
         console.log('received user data', response);
-        target.value = response[0].value;
+        target.value = response[ansIndex].value;
         target.style.backgroundColor = 'cyan';
+        ansIndex++;
+        if (ansIndex > 4) ansIndex = 0;
     });
 
 }
@@ -21,6 +23,10 @@ document.addEventListener('keydown', (e) => {
         handleFocus({target: document.activeElement})
     }
 },true);
+
+let ansIndex = 0;
+
+document.addEventListener('focus', (e) => ansIndex = 0, true);
 
 // document.addEventListener('focus', handleFocus, true);
 
