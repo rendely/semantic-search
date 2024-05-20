@@ -31,7 +31,10 @@ document.addEventListener('focus', (e) => ansIndex = 0, true);
 // document.addEventListener('focus', handleFocus, true);
 
 function handleFocus(e) {
-    const query = e.target.parentElement.innerText + e.target.placeholder;
+    const parentString = e.target.parentElement.innerText;
+    const grandparentString = e.target.parentElement.parentElement.innerText;
+    const placeholder = e.target.placeholder;
+    const query = (parentString.length < 4 ? grandparentString : parentString) + placeholder;
     console.log(query);
     classify(query, e.target);
 }
