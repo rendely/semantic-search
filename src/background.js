@@ -15,6 +15,8 @@ const data = [
     {"key": "Email", "value": "john.snow@example.com"},
     {"key": "Why do you want to work here", "value": "Excited about opportunity"},
     {"key": "Address", "value": "123 Winterfell Lane, Castle Black, The North, Westeros, 01010"},
+    {"key": "City", "value": "Castle Black"},
+    {"key": "Country", "value": "The North"},
     {"key": "Social Security Number (SSN)", "value": "123-45-6789"},
     {"key": "Health Insurance", "value": "123456"},
     {"key": "Primary Care Physician", "value": "Dr. Maester Aemon"},

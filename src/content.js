@@ -25,7 +25,7 @@ document.addEventListener('keydown', (e) => {
 // document.addEventListener('focus', handleFocus, true);
 
 function handleFocus(e) {
-    const query = e.target.parentElement.innerText;
+    const query = e.target.parentElement.innerText + e.target.placeholder;
     console.log(query);
     classify(query, e.target);
 }
