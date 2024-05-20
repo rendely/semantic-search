@@ -13,7 +13,7 @@ const data = [
     {"key": "Phone number", "value": "+1 (555) 123-4567"},
     {"key": "Mobile", "value": "+1 (555) 123-4567"},
     {"key": "Email", "value": "john.snow@example.com"},
-    {"key": "Why", "value": "Excited about opportunity"},
+    {"key": "Why do you want to work here", "value": "Excited about opportunity"},
     {"key": "Address", "value": "123 Winterfell Lane, Castle Black, The North, Westeros, 01010"},
     {"key": "Social Security Number (SSN)", "value": "123-45-6789"},
     {"key": "Health Insurance", "value": "123456"},
