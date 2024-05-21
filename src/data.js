@@ -50,6 +50,8 @@ export const data = [
     { "key": "Expiration Date", "value": "01/25" },
     { "key": "CVV", "value": "123" },
     { "key": "LinkedIn", "value": "https://linkedin.com/in/johnsnow" },
+    { "key": "Github", "value": "https://github.com/johnsnow" },
+    { "key": "Portfolio", "value": "https://portfolio.com/art/johnsnow" },
     { "key": "Twitter", "value": "https://twitter.com/johnsnow_nw" },
     { "key": "Facebook", "value": "https://facebook.com/john.snow.nightswatch" },
     { "key": "Instagram", "value": "https://instagram.com/lordcommander_snow" },

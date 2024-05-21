@@ -59,7 +59,7 @@ function saveInputs(target){
     if ((target.nodeName === 'INPUT' && target.type !== 'text')) return 
     const key = getElementQuery(target);
     const value = target.value;
-    if (key.length < 4 || value.length < 4) return
+    if (key.length < 4 || value.length < 2) return
     const message = {
         action: 'save',
         save: {key, value},
