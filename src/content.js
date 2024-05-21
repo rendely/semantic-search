@@ -26,7 +26,7 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.key === 'u' && e.metaKey){
         const inputs = document.querySelectorAll('input, textarea');
-        const textInputs = Array.from(inputs).filter(i => i.type === 'text' || i.nodeName === 'TEXTAREA');
+        const textInputs = Array.from(inputs).filter(i => i.type === 'text' || i.type === 'email' || i.nodeName === 'TEXTAREA');
         textInputs.forEach(t => autofillElement({target: t},true))
     }
     if (e.key === 'j' && e.metaKey){
