@@ -10,10 +10,13 @@ function classify(query, target, isLucky = false) {
     chrome.runtime.sendMessage(message, (response) => {
         // console.log('received user data', response);
         const answer =  response[(isLucky ? 0 : ansIndex)].value;
-        console.log(query, answer, ansIndex);
-        target.value = answer;
-        target.style.backgroundColor = 'cyan';
-        ansIndex++;
+        const score = response[(isLucky ? 0 : ansIndex)].score;
+        console.log(query, answer, score, ansIndex);
+        if (!isLucky || score > 0.4){
+            target.value = answer + ` (${score.toPrecision(2)})`;
+            target.style.backgroundColor = 'cyan';
+            ansIndex++;
+        }
         if (ansIndex > 4) ansIndex = 0;
     });
 
