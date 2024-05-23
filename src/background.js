@@ -50,17 +50,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'save') {
         console.log('Saving',message);
         const newData = message.save;
-        const old = data.find(d => d.key === newData.key)
-        if (old){
-            old.value = newData.value;
-            (async function () {old.embed = await classify(newData.key)})();
-            sendResponse(old);
+
+        // Check if that key already exists, if yes update value
+        const oldData = data.find(d => d.key === newData.key)
+        if (oldData){
+            oldData.value = newData.value;
+            (async function () {oldData.embed = await classify(newData.key)})();
+            sendResponse(oldData);
             return;
         }
-        console.log(newData);
+        
+        // Else push the new value
         (async function () {newData.embed = await classify(newData.key)})();
         data.push(newData);
-        console.log(data);
         sendResponse(newData);
     }
 
