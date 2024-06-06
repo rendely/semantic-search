@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "extension",
-  "description": "Semantic auto fill",
+  "name": "Semantic autofill",
+  "description": "Semantic autofill",
   "version": "0.0.1",
   "permissions": [
     "activeTab",
