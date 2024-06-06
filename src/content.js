@@ -31,6 +31,9 @@ document.addEventListener('keydown', (e) => {
         const inputs = document.querySelectorAll('input, textarea');
         const textInputs = Array.from(inputs).filter(i => i.type === 'text' || i.type === 'email' || i.nodeName === 'TEXTAREA');
         textInputs.forEach(t => autofillElement({target: t},true))
+        const checkboxInputs =  Array.from(inputs).filter(i => i.type === 'checkbox');
+        checkboxInputs.forEach(c => autoFillCheckbox({target: c},true))
+
     }
     if (e.key === 'j' && e.metaKey){
         saveInputs(document.activeElement)
@@ -50,6 +53,11 @@ function getElementQuery(target){
     const placeholder = target.placeholder;
     const query = (parentString.length < 4 ? grandparentString : parentString) + placeholder;
     return query;
+}
+
+
+function autoFillCheckbox(c){
+    console.log(c);
 }
 
 function autofillElement(e, isLucky=false) {
